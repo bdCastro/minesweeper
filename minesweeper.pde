@@ -75,10 +75,15 @@ void click(int x, int y) {
   
   if(mines[x][y] != 0) return;
     
-  if(x+1 >= 0 && x+1 < gridSize) click(x+1, y);
-  if(x-1 >= 0 && x-1 < gridSize) click(x-1, y);
-  if(y+1 >= 0 && y+1 < gridSize) click(x, y+1);
-  if(y-1 >= 0 && y-1 < gridSize) click(x, y-1);
+  if(x-1 >= 0) click(x-1, y);
+  if(x+1 < gridSize) click(x+1, y);
+  if(y-1 >= 0) click(x, y-1);
+  if(y+1 < gridSize) click(x, y+1);
+      
+  if(x-1 >= 0 && y-1 >= 0) click(x-1, y-1);
+  if(x-1 >= 0 && y+1 < gridSize) click(x-1, y+1);
+  if(x+1 < gridSize && y-1 >= 0) click(x+1, y-1);
+  if(x+1 < gridSize && y+1 < gridSize) click(x+1, y+1);
     
   //if(x+1 >= 0 && x+1 < gridSize && mines[x+1][y] == 0) click(x+1, y);
   //if(x-1 >= 0 && x-1 < gridSize && mines[x-1][y] == 0) click(x-1, y);
