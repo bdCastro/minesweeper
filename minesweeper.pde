@@ -7,6 +7,7 @@ color grey = color(150, 150, 150);
 
 int[][] clicked = new int[gridSize][gridSize];
 int[][] mines = new int[gridSize][gridSize];
+boolean[][] flags = new boolean[gridSize][gridSize];
 
 int tamCell;
 
@@ -50,11 +51,21 @@ void draw() {
 }
 
 void mouseReleased() {
+  int x = mouseX/tamCell;
+  int y = mouseY/tamCell;
+  
   //clicked[mouseX/tamCell][mouseY/tamCell] = 1;
-  if(mines[mouseX/tamCell][mouseY/tamCell] == 0)
-    click(mouseX/tamCell, mouseY/tamCell);
+  if(mouseButton == RIGHT) {
+    flags[x][y] = !flags[x][y];
+    return;
+  }
+  
+  if(flags[x][y]) return;
+  
+  if(mines[x][y] == 0)
+    click(x, y);
   else {
-    clicked[mouseX/tamCell][mouseY/tamCell] = 1;
+    clicked[x][y] = 1;
   }
 }
 
@@ -106,6 +117,12 @@ void drawCell(int x, int y) {
   if(clicked[x][y] == 1 && mines[x][y] == -1) {
     fill(200, 0, 0);
     ellipse(tamCell/2, tamCell/2, tamCell * 0.4, tamCell * 0.4);
+  }
+  
+  if(flags[x][y]) {
+    fill(200, 0, 0);
+    noStroke();
+    rect(tamCell/4, tamCell/4, tamCell * 0.5, tamCell * 0.5);
   }
   
   pop();
