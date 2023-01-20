@@ -71,7 +71,7 @@ void mouseReleased() {
 
 void click(int x, int y) {
   if(clicked[x][y] == 1) return;
-  clicked[x][y] = 1;
+  if(!flags[x][y]) clicked[x][y] = 1;
   
   if(mines[x][y] != 0) return;
     
