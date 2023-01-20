@@ -3,7 +3,7 @@ int nMines = 75;
 
 color lGreen = color(0, 160, 0);
 color dGreen = color(0, 120, 0);
-color grey = color(150, 150, 150);
+color grey = color(180, 180, 180);
 
 int[][] clicked = new int[gridSize][gridSize];
 int[][] mines = new int[gridSize][gridSize];
