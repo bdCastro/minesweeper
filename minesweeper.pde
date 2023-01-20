@@ -55,7 +55,7 @@ void mouseReleased() {
   int y = mouseY/tamCell;
   
   //clicked[mouseX/tamCell][mouseY/tamCell] = 1;
-  if(mouseButton == RIGHT) {
+  if(mouseButton == RIGHT && clicked[x][y] == 0) {
     flags[x][y] = !flags[x][y];
     return;
   }
